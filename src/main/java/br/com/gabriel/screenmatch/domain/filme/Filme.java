@@ -20,6 +20,8 @@ public class Filme {
         this.genero = dados.genero();
     }
 
+    public Filme(){}
+
     public Long getId() { return id; }
 
     public String getNome() {
