@@ -6,6 +6,7 @@ import br.com.gabriel.screenmatch.domain.filme.FilmeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,8 +36,12 @@ public class FilmeController {
     public String cadastraFilme(DadosCadastroFilme dados) {
         var filme = new Filme(dados);
         repository.save(filme);
+        return "redirect:/filmes";
+    }
 
-        //      Realizando um redirecionamento, chamaremos a requisição de listagem para não duplicarmos o código.
+    @DeleteMapping
+    public String removeFilme(){
+        System.out.println("FILME EXCLUIDO!");
         return "redirect:/filmes";
     }
 }
